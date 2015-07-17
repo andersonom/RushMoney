@@ -19,6 +19,7 @@ namespace RushMoney.Infra.Data.Context
         }
 
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,7 +31,10 @@ namespace RushMoney.Infra.Data.Context
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));
+
             modelBuilder.Configurations.Add(new ClientConfiguration());
+            modelBuilder.Configurations.Add(new TransactionConfiguration());
+
 
         }
 

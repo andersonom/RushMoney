@@ -15,7 +15,12 @@ namespace RushMoney.Infra.Data.EntityConfig
 
            Property(p => p.Value)
                .IsRequired();
-               
+
+           HasRequired(p => p.Client)
+               .WithMany()
+               .HasForeignKey(p => p.ClientId);
+
+          
        }
 
     }

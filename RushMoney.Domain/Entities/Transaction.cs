@@ -1,6 +1,4 @@
-﻿
-
-namespace RushMoney.Domain.Entities
+﻿namespace RushMoney.Domain.Entities
 {
     public class Transaction
     {
