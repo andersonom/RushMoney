@@ -16,6 +16,8 @@ namespace RushMoney.MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AutoMapper.AutoMapperConfig.RegisterMappings();
         }
     }
 }

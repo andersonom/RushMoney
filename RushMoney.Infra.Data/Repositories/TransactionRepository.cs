@@ -1,5 +1,5 @@
 ﻿using RushMoney.Domain.Entities;
-using RushMoney.Domain.Interfaces;
+using RushMoney.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

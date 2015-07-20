@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RushMoney.Domain.Interfaces
+namespace RushMoney.Domain.Interfaces.Repositories
 {
     public interface ITransactionRepository : IRepositoryBase<Transaction>
     {

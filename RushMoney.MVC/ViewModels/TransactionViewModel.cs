@@ -1,5 +1,4 @@
-﻿
-
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 namespace RushMoney.MVC.ViewModels
 {
@@ -18,6 +17,7 @@ namespace RushMoney.MVC.ViewModels
         [Range(typeof(decimal), "0", "999999999999")]
         public decimal Value { get; set; }
       
+        [DisplayName("Active?")]
         public bool IsActive { get; set; }
         
         public int ClientId { get; set; }

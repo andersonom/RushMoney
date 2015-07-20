@@ -51,6 +51,17 @@ namespace RushMoney.Infra.Data.Context
 
             }
 
+            //HARDCODE Remove after implementing authentication
+            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("LastLogin") != null ))
+            {
+                if (entry.State == EntityState.Added)
+                    entry.Property("LastLogin").CurrentValue = DateTime.Now;
+
+
+                if (entry.State == EntityState.Modified)
+                    entry.Property("LastLogin").IsModified = false;
+            }
+
             return base.SaveChanges();
         }
     }

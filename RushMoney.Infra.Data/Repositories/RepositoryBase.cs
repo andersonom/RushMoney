@@ -1,8 +1,9 @@
-﻿using RushMoney.Domain.Interfaces;
+﻿using RushMoney.Domain.Interfaces.Repositories;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Data.Entity;
+
 namespace RushMoney.Infra.Data.Repositories
 {
     public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : class
