@@ -4,7 +4,7 @@ using System;
 
 
 namespace RushMoney.Domain.Services
-{
+{ 
     public class ServiceBase<TEntity> : IDisposable, IServiceBase<TEntity> where TEntity : class
     {
         private readonly IRepositoryBase<TEntity> _repository;

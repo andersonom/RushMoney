@@ -1,4 +1,5 @@
-﻿namespace RushMoney.Domain.Entities
+﻿
+namespace RushMoney.Domain.Entities
 {
     public class Transaction
     {
@@ -8,5 +9,7 @@
         public bool IsActive { get; set; }
         public int ClientId { get; set; }
         public virtual Client Client { get; set; }
+
+        public bool IsDebit(Transaction transaction) { return transaction.Value < 0; }
     }
 }

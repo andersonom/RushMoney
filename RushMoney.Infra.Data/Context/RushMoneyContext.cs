@@ -34,8 +34,6 @@ namespace RushMoney.Infra.Data.Context
 
             modelBuilder.Configurations.Add(new ClientConfiguration());
             modelBuilder.Configurations.Add(new TransactionConfiguration());
-
-
         }
 
         public override int SaveChanges()
@@ -45,10 +43,8 @@ namespace RushMoney.Infra.Data.Context
                 if (entry.State == EntityState.Added)
                     entry.Property("RegisterDate").CurrentValue = DateTime.Now;
 
-
                 if (entry.State == EntityState.Modified)
                     entry.Property("RegisterDate").IsModified = false;
-
             }
 
             //HARDCODE Remove after implementing authentication

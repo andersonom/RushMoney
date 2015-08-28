@@ -13,10 +13,7 @@ namespace RushMoney.Domain.Entities
         public DateTime LastLogin { get; set; }
         public bool IsActive { get; set; }
         public virtual IEnumerable<Transaction> Transactions { get; set; }
+               
         
-        public DateTime GetLastLogin(Client client)
-        {
-            return client.LastLogin;
-        }
     }
 }
