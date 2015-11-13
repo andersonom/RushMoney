@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using RushMoney.Domain.Entities;
 using RushMoney.Domain.Interfaces.Repositories;
@@ -18,13 +17,13 @@ namespace RushMoney.Domain.Services
         }
 
         public DateTime GetLastLogin(Client client)
-        {
-            return client.LastLogin;
+        { 
+            return client.LastLogin;  //Should use _clientRepository.method in order to make sense of using this layer
         }
 
-        public IEnumerable<Transaction> GetDebitTransactions(Client client)
+        public IEnumerable<Account> GetAccounts(Client client)
         {
-            return client.Transactions.Where(i => i.IsDebit(i));
+            return client.Accounts;//.Where(i => i.IsDebit(i));    //Should use _clientRepository.method in order to make sense of using this layer
         }
     }
 }

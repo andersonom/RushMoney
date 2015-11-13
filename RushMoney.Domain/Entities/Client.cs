@@ -12,7 +12,8 @@ namespace RushMoney.Domain.Entities
         public DateTime RegisterDate { get; set; }
         public DateTime LastLogin { get; set; }
         public bool IsActive { get; set; }
-        public virtual IEnumerable<Transaction> Transactions { get; set; }
+
+        public virtual IEnumerable<Account> Accounts { get; set; }
                
         
     }

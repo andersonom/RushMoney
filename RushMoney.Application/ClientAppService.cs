@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using RushMoney.Application.Interfaces;
 using RushMoney.Domain.Entities;
-
 using RushMoney.Domain.Interfaces.Services;
-using RushMoney.Application.Interfaces;
+
+using System.Collections.Generic;
 using System;
 
 
@@ -24,9 +24,9 @@ namespace RushMoney.Application
             return client.LastLogin;
         }
 
-        public IEnumerable<Transaction> GetDebitTransactions(Client client)
+        public IEnumerable<Account> GetAccounts(Client client)
         {
-            return _clientService.GetDebitTransactions(client);
+            return _clientService.GetAccounts(client);
         }
     }
 }

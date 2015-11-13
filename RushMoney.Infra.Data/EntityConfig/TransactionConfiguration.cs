@@ -3,25 +3,30 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace RushMoney.Infra.Data.EntityConfig
 {
-   public  class TransactionConfiguration :EntityTypeConfiguration<Transaction>
+    public class TransactionConfiguration : EntityTypeConfiguration<Transaction>
     {
-       public TransactionConfiguration()
-       {
-           HasKey(p => p.Id);
+        public TransactionConfiguration()
+        {
+            HasKey(p => p.Id);
 
-           Property(p => p.Description)
-               .IsRequired()
-               .HasMaxLength(300);
+            Property(p => p.Description)
+                .IsRequired()
+                .HasMaxLength(300);
 
-           Property(p => p.Value)
-               .IsRequired();
+            Property(p => p.Value)
+                .IsRequired();
 
-           HasRequired(p => p.Client)
-               .WithMany()
-               .HasForeignKey(p => p.ClientId);
+            HasRequired(p => p.Account)
+                .WithMany()
+                .HasForeignKey(p => p.AccountId);
 
-          
-       }
+            Property(p => p.Date)
+              .IsRequired();
+
+            HasRequired(p => p.Category)
+            .WithMany()
+            .HasForeignKey(p => p.CategoryId);
+        }
 
     }
 }

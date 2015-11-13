@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+
 namespace RushMoney.MVC.ViewModels
 {
     public class TransactionViewModel
@@ -20,8 +22,18 @@ namespace RushMoney.MVC.ViewModels
         [DisplayName("Active?")]
         public bool IsActive { get; set; }
         
-        public int ClientId { get; set; }
+        public int AccountId { get; set; }
 
-        public virtual ClientViewModel Client { get; set; }
+        public virtual AccountViewModel Account { get; set; }
+
+        public virtual CategoryViewModel Category { get; set; }
+
+        public int CategoryId { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]        
+        public DateTime Date { get; set; }
+
+
     }
 }

@@ -70,14 +70,21 @@ namespace RushMoney.MVC.App_Start
             kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
             kernel.Bind<IClientAppService>().To<ClientAppService>();
             kernel.Bind<ITransactionAppService>().To<TransactionAppService>();
-          
+            kernel.Bind<IAccountAppService>().To<AccountAppService>();
+            kernel.Bind<ICategoryAppService>().To<CategoryAppService>();
+
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<IClientService>().To<ClientService>();
             kernel.Bind<ITransactionService>().To<TransactionService>();
+            kernel.Bind<IAccountService>().To<AccountService>();
+            kernel.Bind<ICategoryService>().To<CategoryService>();
 
-             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));;
+            kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));;
             kernel.Bind<IClientRepository>().To<ClientRepository>();
             kernel.Bind<ITransactionRepository>().To<TransactionRepository>();
+            kernel.Bind<IAccountRepository>().To<AccountRepository>();
+            kernel.Bind<ICategoryRepository>().To<CategoryRepository>();
         }        
     }
 }
+

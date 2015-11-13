@@ -19,13 +19,13 @@ namespace RushMoney.Infra.Data.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //RushMoney.Infra.Data.Context.RushMoneyContext..AddOrUpdate(
-            //  p => p.FullName,
-            //  new Clie { FullName = "Andrew Peters" },
-            //  new Person { FullName = "Brice Lambson" },
-            //  new Person { FullName = "Rowan Miller" }
-            //);
-            
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
         }
     }
 }

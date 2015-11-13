@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,7 +42,7 @@ namespace RushMoney.MVC.ViewModels
         [DisplayName("Active?")]
         public bool IsActive { get; set; }
 
-        public virtual IEnumerable<TransactionViewModel> Transactions { get; set; }
+        public virtual IEnumerable<AccountViewModel> Accounts { get; set; }
 
     }
 }

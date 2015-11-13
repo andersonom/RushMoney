@@ -12,8 +12,7 @@ namespace RushMoney.Infra.Data.EntityConfig
             Property(c => c.FirstName)
                 .IsRequired()
                 .HasMaxLength(50);
-
-            HasKey(c => c.Id);
+                        
             Property(c => c.LastName)
                 .IsRequired()
                 .HasMaxLength(50);

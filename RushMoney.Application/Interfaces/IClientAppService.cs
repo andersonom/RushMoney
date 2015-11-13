@@ -8,6 +8,7 @@ namespace RushMoney.Application.Interfaces
    public interface IClientAppService : IAppServiceBase<Client>
     {
         DateTime GetLastLogin(Client client);
-        IEnumerable<Transaction> GetDebitTransactions(Client client);
+        IEnumerable<Account> GetAccounts(Client client);
+        //IEnumerable<Transaction> GetDebitTransactions(Client client);
     }
 }

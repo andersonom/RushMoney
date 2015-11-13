@@ -23,7 +23,7 @@ namespace RushMoney.Domain.Services
 
         public IEnumerable<Transaction> GetDebitTransactions(IEnumerable<Transaction> transactions)
         {
-            return transactions.Where(c => c.IsDebit(c));
+            return transactions.Where(c => c.IsDebit(c)); //Should use _clientRepository.method in order to make sense of using this layer
         }
     }
 }

@@ -39,8 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryAppService.cs" />
+    <Compile Include="AccountAppService.cs" />
     <Compile Include="AppServiceBase.cs" />
     <Compile Include="ClientAppService.cs" />
+    <Compile Include="Interfaces\ICategoryAppService.cs" />
+    <Compile Include="Interfaces\IAccountAppService.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
     <Compile Include="Interfaces\IClientAppService.cs" />
     <Compile Include="Interfaces\ITransactionAppService.cs" />

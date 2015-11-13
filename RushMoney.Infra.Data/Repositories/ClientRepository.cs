@@ -7,9 +7,9 @@ namespace RushMoney.Infra.Data.Repositories
 {
     public class ClientRepository : RepositoryBase<Client>, IClientRepository
     {
-        public IEnumerable<Transaction> GetDebitTransactions(Client client)
+        public IEnumerable<Account> GetAccounts(Client client)
         {
-            return Db.Transactions.Where(i => i.ClientId.Equals(client.Id) && i.IsDebit(i));
+            return Db.Accounts.Where(i => i.ClientId.Equals(client.Id)); // && i.IsDebit(i)
         }
     }
 }

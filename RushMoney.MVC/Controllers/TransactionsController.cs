@@ -2,10 +2,8 @@
 using RushMoney.Application.Interfaces;
 using RushMoney.Domain.Entities;
 using RushMoney.MVC.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 using System.Web.Mvc;
 
 namespace RushMoney.MVC.Controllers
@@ -13,12 +11,13 @@ namespace RushMoney.MVC.Controllers
     public class TransactionsController : Controller
     {
         private readonly ITransactionAppService _transactionAppService;
-        private readonly IClientAppService _clientAppService;
-
-        public TransactionsController(ITransactionAppService transactionAppService, IClientAppService clientAppService)
+        private readonly IAccountAppService _accountAppService;
+        private readonly ICategoryAppService _categoryAppService;
+        public TransactionsController(ITransactionAppService transactionAppService, IAccountAppService accountAppService, ICategoryAppService categoryAppService)
         {
             _transactionAppService = transactionAppService;
-            _clientAppService = clientAppService;
+            _accountAppService = accountAppService;
+            _categoryAppService = categoryAppService;
         }
 
         // GET: Transactions
@@ -38,8 +37,8 @@ namespace RushMoney.MVC.Controllers
         // GET: Transactions/Create
         public ActionResult Create()
         {
-
-            ViewBag.ClientId = new SelectList(_clientAppService.GetAll(), "Id", "FirstName");
+            ViewBag.CategoryId = new SelectList(_categoryAppService.GetAll(), "Id", "Name");
+            ViewBag.AccountId = new SelectList(_accountAppService.GetAll(), "Id", "Name");
 
             return View();
 
@@ -58,18 +57,17 @@ namespace RushMoney.MVC.Controllers
 
                 return RedirectToAction("Index");
             }
-
-            ViewBag.ClientId = new SelectList(_clientAppService.GetAll(), "ClientId", "FirstName",transaction.ClientId);
-
+          
             return View(transaction);
         }
 
         // GET: Transactions/Edit/5
         public ActionResult Edit(int id)
         {
-            ViewBag.ClientId = new SelectList(_clientAppService.GetAll(), "Id", "FirstName");
-
             var transaction = _transactionAppService.GetById(id);
+
+            ViewBag.AccountId = new SelectList(_accountAppService.GetAll(), "Id", "Name",transaction.AccountId);
+            ViewBag.CategoryId = new SelectList(_categoryAppService.GetAll(), "Id", "Name", transaction.CategoryId);            
 
             return View(Mapper.Map<Transaction, TransactionViewModel>(transaction));
         }
@@ -87,7 +85,7 @@ namespace RushMoney.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ClientId = new SelectList(_clientAppService.GetAll(), "ClientId", "FirstName", transaction.ClientId);
+            ViewBag.AccountId= new SelectList(_accountAppService.GetAll(), "Id", "Name", transaction.AccountId);
 
             return View(transaction);
 

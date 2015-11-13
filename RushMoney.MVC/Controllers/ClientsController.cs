@@ -12,12 +12,12 @@ namespace RushMoney.MVC.Controllers
     public class ClientsController : Controller
     {
         private readonly IClientAppService _clientAppService;
-        private readonly ITransactionAppService _transactionAppService;
+        private readonly IAccountAppService _accountAppService;
 
-        public ClientsController(IClientAppService clientAppService, ITransactionAppService transactionAppService)
+        public ClientsController(IClientAppService clientAppService, IAccountAppService accountAppService)
         {
             _clientAppService = clientAppService;
-            _transactionAppService = transactionAppService;
+            _accountAppService = accountAppService;
         }
 
         // GET: Clients
@@ -28,13 +28,13 @@ namespace RushMoney.MVC.Controllers
             return View(clientViewModel);
         }
 
-        // GET: Clients
-        public ActionResult Transactions(ClientViewModel client)
+        // GET: Clients      
+        public ActionResult Accounts(ClientViewModel client)
         {
 
-            var transactionViewModel = Mapper.Map<IEnumerable<Transaction>, IEnumerable<TransactionViewModel>>(_clientAppService.GetDebitTransactions(Mapper.Map<ClientViewModel, Client>(client)));
+            var clientViewModel = Mapper.Map<IEnumerable<Account>, IEnumerable<AccountViewModel>>(_clientAppService.GetAccounts(Mapper.Map<ClientViewModel, Client>(client)));
 
-            return View(transactionViewModel);
+            return View(clientViewModel);
         }
 
         // GET: Clients/Details/5
@@ -104,20 +104,13 @@ namespace RushMoney.MVC.Controllers
         // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(ClientViewModel client)
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                var clientDomain = Mapper.Map<ClientViewModel, Client>(client);
+               var clientDomain = _clientAppService.GetById(id);
 
                 _clientAppService.Remove(clientDomain);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                return RedirectToAction("Index");          
         }
     }
 }

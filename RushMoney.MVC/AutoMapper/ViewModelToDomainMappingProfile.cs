@@ -16,6 +16,8 @@ namespace RushMoney.MVC.AutoMapper
         {
             Mapper.CreateMap<Client, ClientViewModel>();
             Mapper.CreateMap<Transaction, TransactionViewModel >();
+            Mapper.CreateMap<Account, AccountViewModel>();
+            Mapper.CreateMap<Category, CategoryViewModel>();
         }
     }
 }

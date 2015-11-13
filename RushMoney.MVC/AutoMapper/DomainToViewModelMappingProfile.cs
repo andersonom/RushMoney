@@ -14,7 +14,9 @@ namespace RushMoney.MVC.AutoMapper
         protected override void Configure()
         {
             Mapper.CreateMap<ClientViewModel, Client>();
-            Mapper.CreateMap<TransactionViewModel, Transaction>(); 
+            Mapper.CreateMap<TransactionViewModel, Transaction>();
+            Mapper.CreateMap<AccountViewModel, Account>();
+            Mapper.CreateMap<CategoryViewModel,Category>();
         }
     }
 }

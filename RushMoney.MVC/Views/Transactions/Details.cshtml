@@ -35,11 +35,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Client)
+            @Html.DisplayNameFor(model => model.Account.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Client.FirstName)
+            @Html.DisplayFor(model => model.Account.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
         </dd>
 
     </dl>
