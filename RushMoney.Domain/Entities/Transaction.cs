@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace RushMoney.Domain.Entities
 {
     public class Transaction
@@ -13,5 +14,6 @@ namespace RushMoney.Domain.Entities
         public virtual Category Category { get; set; }
         public DateTime Date { get; set; }
         public bool IsDebit(Transaction transaction) { return transaction.Value < 0; }
+ 
     }
 }

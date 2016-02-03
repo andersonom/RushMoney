@@ -17,6 +17,7 @@ namespace RushMoney.MVC.ViewModels
         [DisplayName("Active?")]
         public bool IsActive { get; set; }
 
+        [Required(ErrorMessage = "Select a Client")]
         public int ClientId { get; set; }
 
         public virtual ClientViewModel Client { get; set; }

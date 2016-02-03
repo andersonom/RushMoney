@@ -91,12 +91,17 @@ namespace RushMoney.MVC.Controllers
         }
 
         // POST: Account/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             try
             {
+                //var _transacitonAppSerivce = new RushMoney.Application.Interfaces.ITransactionAppService();
+                //if (_accountAppService.Tra
+                //{
+
+                //}
                 var accountDomain = _accountAppService.GetById(id);
 
                 _accountAppService.Remove(accountDomain);

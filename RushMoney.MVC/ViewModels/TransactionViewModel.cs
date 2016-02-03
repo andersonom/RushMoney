@@ -9,13 +9,13 @@ namespace RushMoney.MVC.ViewModels
         [Key ]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Fill field Description")]
+        [Required]      //(ErrorMessage = "Fill field Description")
         [MaxLength(300, ErrorMessage = "Maximum {0} characters")]
         [MinLength(2, ErrorMessage = "Maximum {0} characters")]
         public string Description { get; set; }
 
         [DataType(DataType.Currency)]
-        [Required(ErrorMessage = "Fill field value")]        
+        [Required]        //(ErrorMessage = "Fill field value")
         [Range(typeof(decimal), "0", "999999999999")]
         public decimal Value { get; set; }
       
@@ -30,7 +30,7 @@ namespace RushMoney.MVC.ViewModels
 
         public int CategoryId { get; set; }
 
-        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]        
         public DateTime Date { get; set; }
 

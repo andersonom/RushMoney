@@ -15,7 +15,7 @@ namespace RushMoney.MVC.Controllers
     {
 
         private readonly ICategoryAppService _categoryAppService;
-        
+
         public CategoriesController(ICategoryAppService categoryAppService)
         {
             _categoryAppService = categoryAppService;
@@ -32,7 +32,11 @@ namespace RushMoney.MVC.Controllers
         // GET: Category/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            var categoryViewModel = Mapper.Map<Category, CategoryViewModel>(_categoryAppService.GetById(id));
+            return View(categoryViewModel);
+
+
         }
 
         // GET: Category/Create
@@ -46,8 +50,8 @@ namespace RushMoney.MVC.Controllers
         public ActionResult Create(CategoryViewModel categoryViewModel)
         {
             try
-            {                
-                var categoryDomain= Mapper.Map<CategoryViewModel, Category>(categoryViewModel);
+            {
+                var categoryDomain = Mapper.Map<CategoryViewModel, Category>(categoryViewModel);
                 _categoryAppService.Add(categoryDomain);
                 return RedirectToAction("Index");
             }
@@ -60,16 +64,21 @@ namespace RushMoney.MVC.Controllers
         // GET: Category/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+
+            var categoryDomain = _categoryAppService.GetById(id);
+
+            return View(Mapper.Map<Category, CategoryViewModel>(categoryDomain));
+
         }
 
         // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(CategoryViewModel categoryViewModel)
         {
             try
             {
-                // TODO: Add update logic here
+                var categoryModel = Mapper.Map<CategoryViewModel, Category>(categoryViewModel);
+                _categoryAppService.Update(categoryModel);
 
                 return RedirectToAction("Index");
             }
@@ -82,17 +91,24 @@ namespace RushMoney.MVC.Controllers
         // GET: Category/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+
+            var categoryDomain = _categoryAppService.GetById(id);
+
+            return View(Mapper.Map<Category, CategoryViewModel>(categoryDomain));
+
         }
 
         // POST: Category/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                var categoryModel = _categoryAppService.GetById(id);
 
+                _categoryAppService.Remove(categoryModel);
+                
                 return RedirectToAction("Index");
             }
             catch

@@ -102,11 +102,11 @@ namespace RushMoney.MVC.Controllers
         // POST: Transactions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(TransactionViewModel transaction)
+        public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                var transactionDomain = Mapper.Map<TransactionViewModel, Transaction>(transaction);
+                var transactionDomain = _transactionAppService.GetById(id);
 
                 _transactionAppService.Remove(transactionDomain);
 

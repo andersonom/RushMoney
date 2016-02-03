@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Rush Money", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -30,6 +30,9 @@
         </div>
     </div>
     <div class="container body-content">
+        <div class=”row”>
+            <div class=”col-md-12”><img src="../Content/Images/logo.jpg" class="img-responsive center-block" /></div>
+        </div>
         @RenderBody()
         <hr />
         <footer>
@@ -40,5 +43,25 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.selectpicker').selectpicker(
+            //{
+            //style: 'btn-info',
+            //size: 4,
+
+            //}
+        );
+    });
+
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker({
+            autoclose: true,
+            format: "dd/mm/yyyy"
+
+        }); //Initialise any date pickers
+    });
+    </script>
 </body>
 </html>
